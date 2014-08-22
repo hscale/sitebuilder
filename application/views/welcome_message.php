@@ -69,6 +69,8 @@
 <div id="container">
 
 	<h1>Welcome to CodeIgniter!</h1>
+    
+	<h1>Welcome to Orange!</h1>
 
 	<h1>Welcome to Apple!</h1>
 	
