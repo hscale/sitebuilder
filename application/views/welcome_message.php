@@ -67,12 +67,12 @@
 <body>
 
 <div id="container">
-<<<<<<< HEAD
-	<h1>Welcome to CodeIgniter!</h1>
-=======
-	<h1>Welcome to Apple!</h1>
->>>>>>> origin/master
 
+	<h1>Welcome to CodeIgniter!</h1>
+
+	<h1>Welcome to Apple!</h1>
+	
+    <h1>github so noob!</h1>
 	<div id="body">
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
 
