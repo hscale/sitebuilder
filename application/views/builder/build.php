@@ -21,9 +21,20 @@
 
 <div id="builder-component">
 	<button class="draggable">Submit</button>
+    <button class="draggable">Back</button>
+    <form class="draggable droppable-form">
+    	<fieldset>
+        	<legend>Simple form</legend>
+        </fieldset>
+    </form>
+    <input type="text" class="draggable">
 </div>
 <script>
 $(function(e) {
+	
+	var dropAvailable = true;
+	
+	
     $( ".draggable" ).draggable({
 		cancel: false,
 		helper: "clone"
@@ -31,23 +42,43 @@ $(function(e) {
 	
 	$( "#builder-panel" ).droppable({
 		drop: function( event, ui ) {
-			var $component = ui.draggable.clone();
 			
-			if(!$component.hasClass( "dragged" )) {
-				$component.addClass( "dragged" );
-				$component.draggable({
+			// Get the drag element
+			var $element = ui.draggable.clone();
+			
+			// Control multi copy
+			if(!$element.hasClass( "dragged" )) {
+				$element.addClass( "dragged" );
+				
+				// Add Click Event
+				$( $element ).mousedown(function(e) {
+					$( $element ).parent( ".element-container" ).css({
+						border: "1px solid #C03"
+					});
+				});
+	
+				// Set it to draggable
+				$element.draggable({
 					cancel: false,
 					containment: $(this)
 				})
-				$(this).append($component);
 				
-				$component.css({
-                    left: (ui.position.left),
-                    top: (ui.position.top),
-                    position: 'absolute'
-                });
+				// Add a container
+				var $elementContainer = $("<div>", { class: "element-container" });
+				$elementContainer.css({
+					
+				});
+				$elementContainer.append( $element );
+				$( this ).append( $elementContainer );
+				
+				$element.css({
+					left:		ui.position.left,
+					top:		ui.position.top,
+					position:	'absolute'
+				});
 			}
 		}
 	});
 });
+
 </script>
